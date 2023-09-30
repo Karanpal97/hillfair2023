@@ -1,8 +1,8 @@
-const postRepository=require("../repository/post_Repository");
+const PostRepository=require("../repository/post_Repository");
 const hashRepository=require("../repository/hash_repository");
 const {StatusCodes}=require("http-status-codes")
 const AppError=require("../utils/errors/app-error")
-const postRepo=new postRepository();
+const postRepo=new PostRepository();
 const hashRepo=new hashRepository();
 
 async function create(data){

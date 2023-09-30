@@ -1,7 +1,7 @@
 const {Post} =require("../models/post");
 const crudRepository = require("./crud_repository");
 
-class postRepository extends crudRepository{
+class PostRepository extends crudRepository{
    constructor(){
       super(Post)
    }
@@ -18,4 +18,4 @@ class postRepository extends crudRepository{
    }
 }
 
-module.exports=postRepository;
+module.exports=PostRepository;

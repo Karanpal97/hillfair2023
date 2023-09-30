@@ -1,8 +1,8 @@
 const express=require("express")
-const {likeController}=require("../../controllers")
+const toggleLike=require("../../controllers/like_Controller")
 
 
 
 const router=express.Router();
-router.post('/',likeController.createLike)
+router.post('/',toggleLike)
 module.exports=router;
