@@ -17,7 +17,7 @@ app.use('/api',apiRoute)
 app.use("/event", EventRout);
 
 const port = process.env.PORT;
-console.log(process.env.PORT);
+console.log(process.env.port);
 
 
 
