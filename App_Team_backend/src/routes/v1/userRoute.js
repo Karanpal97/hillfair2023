@@ -1,9 +1,16 @@
-const express=require("express")
-const {userController}=require("../../controllers")
+const express=require("express");
+
+
+const { InfoController } = require('../../controllers');
+const {UserController}=require('../../controllers');
+const { AuthRequestMiddlewares } = require('../../middleware');
 
 
 
 const router=express.Router();
-router.post('/',userController.createUser)
-module.exports=router;
 
+router.get('/info', AuthRequestMiddlewares.checkAuth, InfoController.info);
+router.post('/signUp' ,UserController.signUp);
+router.post('/signIn' ,AuthRequestMiddlewares.validateAuthRequest,UserController.signIn);
+
+module.exports=router

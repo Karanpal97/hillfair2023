@@ -1,90 +1,86 @@
-const userRepository=require("../repository/user-repository");
-const AppError=require("../utils/errors/app-error")
 const {StatusCodes}=require("http-status-codes")
+const userRepository =require('../repository/user-repository')
+const AppError=require("../utils/errors/app-error")
+const bcrypt=require("bcrypt");
+const jwt=require('jsonwebtoken')
+const ServerConfig =require('../config/ServerConfig')
+console.log(ServerConfig)
+
+const UserRepo =  new userRepository();
 
 
-
-const userRepo=new userRepository();
-
-
-async function signUp(data){
-   try{
-     const user = await userRepo.create(data);
-     return user;
-  }
-     catch(error){
+// Sign Up
+async function create(data){
+    try{
+        const user= await UserRepo.create(data);
+        return user;
+    }
+    catch(error){
         console.log(error)
-        throw error
-     }
-  }
+        throw new AppError("cannot create the new user object", StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+}
 
-  
-// async function signIn(data){
-//    try{
-//      const user = await userRepo.findByEmail(data.email);
+
+//Sign In
+async function signin(data){
+    try{
+   const user = await UserRepo.getUserByEmail(data.email);
+   if(!user){
+    throw new AppError("User with the given email was not found",StatusCodes.NOT_FOUND)
+
+   }
     
-//      if(!user){
-//       throw new AppError("cannot find the user with the give email address!! ",StatusCodes.NOT_FOUND)
-//      }
-//      const matchpassword=checkPassword(data.password,user.password);
-//      if(!matchpassword){
-//       throw new AppError("Write the correct password",StatusCodes.BAD_REQUEST)
-//      }
+    const matchedPassword= checkPassword(data.password, user.password)
+    if(!matchedPassword){
+        throw new AppError("Password is invalid",StatusCodes.BAD_REQUEST)
+    }
+   return createToken({id:user.id, email:user.email});
+}
 
-//      return generateJWT({email:user.email,_id:user.id})
+catch(error){
+console.log(error);
+throw error;
+    }
+}
 
-//   }
-//      catch(error){
-//         console.log(error)
-//         throw error
-//      }
-//   }
-
-
-//   async function isAuthentication(token){
-//    try{
-//    if(!token){
-//      throw new AppError("jwt token is missing",StatusCodes.BAD_REQUEST)
-//    }
-//    const user=verifyToken(token);
-//    return user;
+function checkPassword(plainPassword,encryptedPassword){
+    const response= bcrypt.compareSync(plainPassword,encryptedPassword)
+    return response;
+}
 
 
-//    }catch(error){
-//       if (error instanceof AppError) throw error;
-//         if(error.name=='JsonWebTokenError'){
-//             throw new AppError('invalid jwt token', StatusCodes.BAD_REQUEST);
-//         }
-//         if(error.name=="TokenExpiredError"){
-//             throw new AppError('TimeOut!! try after some time', StatusCodes.REQUEST_TIMEOUT);
-//         }
-//         console.log(error);
+ // Authentication
+function isAuthentication(token){
+    try{
+        if (!token){
+            throw new AppError('missing JWT token', StatusCodes.BAD_REQUEST);}
+      const user= verifyToken(token)
+     return user.id;
+}
+    catch(error){
+        if (error instanceof AppError) throw error;
+        if(error.name=='JsonWebTokenError'){
+            throw new AppError('invalid jwt token', StatusCodes.BAD_REQUEST);
+        }
+        console.log(error);
 
-//     throw new AppError('something went wrong', StatusCodes.INTERNAL_SERVER_ERROR);
-//     }
+    throw new AppError('something went wrong', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+// this is the function to create the JWT Token
+function createToken(input){
+const response= jwt.sign(input,ServerConfig.JWT_SECRET_KEY,{expiresIn:ServerConfig.EXPIRES_IN})
+return response;
+}
+
+// this function is to verify the JWT token
+function verifyToken(token){
+    const response= jwt.verify(token,ServerConfig.JWT_SECRET_KEY);
+    return response;}
 
 
-//    }
 
-
-  
-
-
-
-//    function checkPassword(inputPassword,dataBasePassword){
-//       const responce=bcrypt.compareSync(inputPassword,dataBasePassword);
-//       return responce
-
-//   }
-//    function generateJWT(input){
-//       const token =jwt.sign({input},"karan_secret",{expiresIn:"300s"})
-//       return token
-
-//    }
-//    function verifyToken(token){
-//       const responce =jwt.verify(token,"karan_secret");
-//       return responce
-//    }
-
-  module.exports={signUp}
+module.exports={create,signin,isAuthentication}
 

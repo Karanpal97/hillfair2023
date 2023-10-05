@@ -1,5 +1,6 @@
 const mongoose=require("mongoose");
-const {ObjectId}=require("bson");
+
+const bcrypt=require("bcrypt")
 
 
 const  userSchema=new mongoose.Schema({
@@ -25,7 +26,18 @@ const  userSchema=new mongoose.Schema({
 })
 
 
-const Users2=mongoose.model("Users2",userSchema)
+
+
+userSchema.pre("save",function(next){
+   const user=this
+   const encryptedPassword= bcrypt.hashSync(user.password,8)
+   user.password= encryptedPassword;
+   next();
+   
+   })
+   const Users2=mongoose.model("Users2",userSchema)
+   
+  
 
 
 

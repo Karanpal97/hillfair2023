@@ -16,6 +16,10 @@ try{const responce= await this.model.create(data);
    return find;
 
  }
+ async destroy(id){
+  const responce =await this.model.findByIdAndDelete(id);
+  return responce
+ }
 
 
 
