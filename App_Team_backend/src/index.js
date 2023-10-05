@@ -3,6 +3,7 @@ const {connect} = require("./config/db");
 const cors = require("cors");
 require('dotenv').config();
 const apiRoute=require("./routes")
+const EventRout = require("./routes/Events");
 
 
 connect()
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
 app.use('/api',apiRoute)
+app.use("/event", EventRout);
 
 const port = process.env.PORT;
 console.log(process.env.PORT);
