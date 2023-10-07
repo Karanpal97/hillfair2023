@@ -4,6 +4,7 @@ const cors = require("cors");
 require('dotenv').config();
 const apiRoute=require("./routes")
 const EventRout = require("./routes/Events");
+const teamrouter = require("./routes/TeamRoutes")
 const swaggerUi = require("swagger-ui-express");
 const spec = require ("./swagger/swagger.Json")
 
@@ -13,11 +14,13 @@ console.log("connected");
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({extended:true}))
 
+app.use('/api-docs' , swaggerUi.serve,swaggerUi.setup(spec));
 app.use('/api',apiRoute)
 app.use("/event", EventRout);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spec));
+app.use("/team", teamrouter);
 
 const port = process.env.PORT;
 console.log(process.env.port);

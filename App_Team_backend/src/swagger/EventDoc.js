@@ -15,7 +15,7 @@
  *            type: string
  *            description: end date of event
  *           venue: 
- *            type: string
+ *            type: array
  *            description: venue of the event
  *           info:
  *              type: string
@@ -163,3 +163,4 @@
  *            '500':
  *                description: INternal server Error   
  */
+
