@@ -11,10 +11,12 @@ async function create(data){
      const content=data.content;
      const tags=content.match(/#+[a-zA-Z0-9(_)]+/g).
      map((tag) => tag.substring(1).toLowerCase());
+     console.log(tags)
      const responce=await postRepo.create(data);
     
+    
 
-     let alReadyPresentTag= await hashRepo.findbyName(tags)
+   let alReadyPresentTag= await hashRepo.findbyName(tags)
      console.log(alReadyPresentTag)
 
    
@@ -34,10 +36,28 @@ async function create(data){
    })
    return responce
 
+  
+
    }catch(error){
       console.log(error)
        throw new AppError("connot create the post", StatusCodes.BAD_REQUEST)
    }
 }
 
-module.exports={create};
+
+async function findPost(){
+try{const responce=await postRepo.findAll();
+return responce;}
+catch(error){
+  return error
+}
+}
+async function deletePost(id){
+  try{const responce=await postRepo.destroy(id);
+  return responce;}
+  catch(error){
+    return error
+  }
+  }
+
+module.exports={create,findPost,deletePost};

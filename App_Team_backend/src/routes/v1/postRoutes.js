@@ -8,12 +8,13 @@ const router=express.Router();
 
 
 router.post("/",validateMiddleware.validCreateRequest,postController.createPost)
-// router.patch("/",tweetController.remove)
+router.get("/get",postController.find);
+router.patch('/:id',postController.remove)
 
 
 
 
-// router.get("/get",tweetController.findAllTweet)
+// 
 
 // router.get('/:id', tweetController.findTweet)
 

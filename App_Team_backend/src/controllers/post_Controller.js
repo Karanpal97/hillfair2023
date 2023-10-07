@@ -28,5 +28,49 @@ async function createPost(req,res){
 
 }
 
+async function find(req,res){
+   try{
+      const responce= await postService.findPost();
+      SuccessResponce.data=responce
+      return res
+       .status(StatusCodes.OK)
+       .json(SuccessResponce)
+      
 
-module.exports={createPost}
+   }catch(error){ 
+      
+        ErrorResponce.error=error
+        return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json(
+         ErrorResponce
+        )
+   }
+
+
+}
+async function remove(req,res){
+   try{
+      const responce= await postService.deletePost(req.params.id);
+      console.log(responce)
+      SuccessResponce.data=responce
+      return res
+       .status(StatusCodes.OK)
+       .json(SuccessResponce)
+      
+
+   }catch(error){ 
+      console.log(error)
+        ErrorResponce.error=error
+        return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json(
+         ErrorResponce
+        )
+   }
+
+
+}
+
+
+module.exports={createPost,find,remove}
