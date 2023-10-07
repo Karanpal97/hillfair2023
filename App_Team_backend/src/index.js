@@ -4,6 +4,8 @@ const cors = require("cors");
 require('dotenv').config();
 const apiRoute=require("./routes")
 const EventRout = require("./routes/Events");
+const swaggerUi = require("swagger-ui-express");
+const spec = require ("./swagger/swagger.Json")
 
 
 connect()
@@ -15,6 +17,7 @@ app.use(express.urlencoded({extended:true}))
 
 app.use('/api',apiRoute)
 app.use("/event", EventRout);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spec));
 
 const port = process.env.PORT;
 console.log(process.env.port);
