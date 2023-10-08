@@ -1,24 +1,26 @@
 const PostRepository=require("../repository/post_Repository");
 const hashRepository=require("../repository/hash_repository");
+
 const {StatusCodes}=require("http-status-codes")
 const AppError=require("../utils/errors/app-error")
 const postRepo=new PostRepository();
 const hashRepo=new hashRepository();
 
+
 async function create(data){
    try{
 
      const content=data.content;
-     const tags=content.match(/#+[a-zA-Z0-9(_)]+/g).
+   
+    const tags=content.match(/#+[a-zA-Z0-9(_)]+/g).
      map((tag) => tag.substring(1).toLowerCase());
-     console.log(tags)
+    
      const responce=await postRepo.create(data);
     
+
+   
     
-
-   let alReadyPresentTag= await hashRepo.findbyName(tags)
-     console.log(alReadyPresentTag)
-
+  let alReadyPresentTag= await hashRepo.findbyName(tags)
    
    let textOfPresentTags = alReadyPresentTag.map(tags => tags.text)
      let newTag=tags.filter((tag)=>!textOfPresentTags.includes(tag));
@@ -33,6 +35,7 @@ async function create(data){
    alReadyPresentTag.forEach((tag) => {
        tag.post.push(responce.id);
        tag.save();
+       
    })
    return responce
 

@@ -7,9 +7,12 @@ async function createPost(req,res){
       const responce= await postService.create({
          content:req.body.content,
          likes:req.body.likes,
-         comment:req.body.comment
+         comment:req.body.comment,
+         User:req.body.User
       })
-      SuccessResponce.data=responce
+      console.log(responce)
+     
+     SuccessResponce.data=responce
       return res
        .status(StatusCodes.CREATED)
        .json(SuccessResponce)

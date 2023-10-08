@@ -137,3 +137,50 @@
  *                  description: error in signUp the user
  * 
 */
+/** 
+ * @swagger
+ * /api/v1/post/get:
+ *                get:
+ *                   tags: ['get']
+ *                   summary: Api used to get all the posts
+ *                   requestBody:
+ *                         required: true
+ *                         content:
+ *                           application/json:
+ *                               schema:
+ *                                                               
+ *                   responses:
+ *                '201':
+ *                   description: this will the posts
+ *                   content:
+ *                       application/json:
+ *                           schema:
+ * 
+ *                '500':
+ *                  description: error in getting the post
+ * 
+*/
+
+/** 
+ * @swagger
+ * /api/v1/post/:id
+ *                delete:
+ *                   tags: ['delete']
+ *                   summary: Api used to delete the post with the PostId
+ *                   requestBody:
+ *                         required: true
+ *                         content:
+ *                           application/json:
+ *                               schema:
+ *                                                               
+ *                   responses:
+ *                '201':
+ *                   description: this will delete the post
+ *                   content:
+ *                       application/json:
+ *                           schema:
+ * 
+ *                '500':
+ *                  description: error in deleting the post
+ * 
+*/
