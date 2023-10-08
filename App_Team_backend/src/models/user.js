@@ -29,7 +29,7 @@ const  userSchema=new mongoose.Schema({
    instagram:{
       type:String
    },
-   RollNo:{
+   rollNo:{
       type:String
    }
 })
