@@ -163,7 +163,7 @@
 
 /** 
  * @swagger
- * /api/v1/post/:id
+ * /api/v1/post/:id:
  *                delete:
  *                   tags: ['delete']
  *                   summary: Api used to delete the post with the PostId
@@ -185,27 +185,3 @@
  * 
 */
 
-
-/** 
- * @swagger
- * /api/v1/user/rollNo:
- *                   get:
- *                   tags: ['get']
- *                   summary: Api used to get the user through the rollNo
- *                   requestBody:
- *                         required: true
- *                         content:
- *                           application/json:
- *                               schema:
- *                                                               
- *                   responses:
- *                '201':
- *                   description: this will get the user
- *                   content:
- *                       application/json:
- *                           schema:
- * 
- *                '500':
- *                  description: error in getting the user through rollNo
- * 
-*/
