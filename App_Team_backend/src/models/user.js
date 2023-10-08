@@ -22,6 +22,15 @@ const  userSchema=new mongoose.Schema({
    }],
    name:{
       type:String
+   },
+   image: {
+      type:String
+   },
+   instagram:{
+      type:String
+   },
+   RollNo:{
+      type:String
    }
 })
 
