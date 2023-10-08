@@ -30,7 +30,7 @@ async function signin(data){
     throw new AppError("User with the given email was not found",StatusCodes.NOT_FOUND)
 
    }
-    
+ 
     const matchedPassword= checkPassword(data.password, user.password)
     if(!matchedPassword){
         throw new AppError("Password is invalid",StatusCodes.BAD_REQUEST)
@@ -43,6 +43,22 @@ console.log(error);
 throw error;
     }
 }
+
+async function rollNo(rollNo){
+    try{
+ const user=await UserRepo.getUserByRollNo(rollNo);
+ if(!user){
+    throw new AppError("User with the given rollNo was not found",StatusCodes.NOT_FOUND)
+ }
+ return user;
+    }
+    catch(error){
+console.log(error);
+throw error;
+    }
+}
+
+
 
 function checkPassword(plainPassword,encryptedPassword){
     const response= bcrypt.compareSync(plainPassword,encryptedPassword)
@@ -82,5 +98,5 @@ function verifyToken(token){
 
 
 
-module.exports={create,signin,isAuthentication}
+module.exports={create,signin,isAuthentication,rollNo}
 
