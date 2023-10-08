@@ -9,7 +9,12 @@ async function signUp(req,res){
     try{
 const user=await userService.create({
     email:req.body.email,
-    password:req.body.password
+    password:req.body.password,
+    bio:req.body.bio,
+    post:req.body.post,
+    name:req.body.name,
+    rollNo:req.body.rollNo,
+    Instagram:req.body.Instagram
 })
 console.log(user)
 SuccessResponce.data=user;
@@ -51,4 +56,25 @@ catch(error){
     }
 }
 
-module.exports= {signUp,signIn}
+async function RollNo(req,res){
+    try{
+const user=await userService.rollNo(req.params.rollNo
+  )
+  console.log(user)
+SuccessResponce.data=user;
+return res
+.status(StatusCodes.CREATED)
+.json(SuccessResponce)
+}
+
+catch(error){
+     console.log(error)
+     ErrorResponce.error=error;
+     return res
+     .status(StatusCodes.BAD_REQUEST)
+     .json(ErrorResponce)
+     
+    }
+}
+
+module.exports= {signUp,signIn,RollNo}
