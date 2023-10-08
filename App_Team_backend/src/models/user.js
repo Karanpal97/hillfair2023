@@ -22,16 +22,18 @@ const  userSchema=new mongoose.Schema({
    }],
    name:{
       type:String
+   }
+   rollNo:{
+      type:String
    },
+   
    image: {
       type:String
    },
-   instagram:{
+   Instagram:{
       type:String
    },
-   RollNo:{
-      type:String
-   }
+   
 })
 
 
