@@ -4,15 +4,17 @@ const {SuccessResponce,ErrorResponce}=require("../utils")
 
 async function createPost(req,res){
    try{
-      const responce= await postService.create({
+      const postdata={
          content:req.body.content,
          likes:req.body.likes,
          comment:req.body.comment,
-         User:req.body.User
-      })
+         
+      
+      }
+      const response = await postService.create(postdata, req.User);
       // console.log(responce)
      
-     SuccessResponce.data=responce
+     SuccessResponce.data=response
       return res
        .status(StatusCodes.CREATED)
        .json(SuccessResponce)

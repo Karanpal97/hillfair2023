@@ -8,15 +8,15 @@ const postRepo=new PostRepository();
 const hashRepo=new hashRepository();
 
 
-async function create(data){
+async function create(data,response){
    try{
-
+      console.log(response)
      const content=data.content;
    
     const tags=content.match(/#+[a-zA-Z0-9(_)]+/g).
      map((tag) => tag.substring(1).toLowerCase());
     
-     const responce=await postRepo.create(data);
+     const responce=await postRepo.create({...data,User:response});
 
     //  const id=await checkAuth()
     //  console.log(id)
