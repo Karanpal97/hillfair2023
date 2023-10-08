@@ -10,7 +10,7 @@ async function createPost(req,res){
          comment:req.body.comment,
          User:req.body.User
       })
-      console.log(responce)
+      // console.log(responce)
      
      SuccessResponce.data=responce
       return res

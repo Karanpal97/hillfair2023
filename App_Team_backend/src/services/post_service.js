@@ -1,5 +1,6 @@
 const PostRepository=require("../repository/post_Repository");
 const hashRepository=require("../repository/hash_repository");
+// const {checkAuth}=require("../middleware/validate-auth-request-middleware")
 
 const {StatusCodes}=require("http-status-codes")
 const AppError=require("../utils/errors/app-error")
@@ -16,6 +17,9 @@ async function create(data){
      map((tag) => tag.substring(1).toLowerCase());
     
      const responce=await postRepo.create(data);
+
+    //  const id=await checkAuth()
+    //  console.log(id)
     
 
    

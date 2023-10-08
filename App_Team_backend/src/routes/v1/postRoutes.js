@@ -1,5 +1,6 @@
 const express=require("express")
 const {postController}=require("../../controllers")
+const { AuthRequestMiddlewares } = require('../../middleware');
 
 
 //  const {validateMiddleware}=require("../../middleware")
@@ -7,7 +8,7 @@ const {postController}=require("../../controllers")
 const router=express.Router();
 
 
-router.post("/",postController.createPost)
+router.post("/",AuthRequestMiddlewares.checkAuth ,postController.createPost)
 router.get("/get",postController.find);
 router.delete('/:id',postController.remove)
 

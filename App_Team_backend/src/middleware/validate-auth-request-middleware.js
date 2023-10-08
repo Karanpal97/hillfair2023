@@ -2,7 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 
 const { ErrorResponce } = require('../utils');
 const AppError = require('../utils/errors/app-error');
-const { UserService } = require('../services');
+const  {userService}  = require('../services');
 
 
 
@@ -28,13 +28,15 @@ function validateAuthRequest(req, res, next) {
 
 async function checkAuth(req,res,next){
     try{
-        const response= await UserService.isAuthentication(req.headers['x-access-token']);
+        const response= await userService.isAuthentication(req.headers['x-access-token']);
+        console.log(response)
     if(response){
         req.user=response;
         next()
     }
    }
     catch(error){
+        console.log(error)
         return res
         .status(error.statusCode)
         .json(error);
