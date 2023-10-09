@@ -3,7 +3,8 @@ const {ObjectId}=require("bson")
 
 
 
-const postSchema=new mongoose.Schema({
+const postSchema=new mongoose.Schema(
+   {
 
    content:{
             type:String,
@@ -18,10 +19,10 @@ const postSchema=new mongoose.Schema({
       ref:'Comment'
    }],
 
-   User:[{
+   User:{
       type:mongoose.Schema.Types.ObjectId,
       ref:'Users2'
-   }]
+   }
 
 })
 

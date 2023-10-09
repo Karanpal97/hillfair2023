@@ -33,7 +33,7 @@
 
 /**
  * @swagger
- * /getEvent:
+ * /event/getEvent:
  *      get: 
  *         tags: ['Events']
  *         summary: Api to get all events
@@ -51,7 +51,7 @@
 
 /**
  * @swagger
- *  /postEvent:
+ *  /event/postEvent:
  *         post:
  *            tags: ['Events']
  *            summary: Api to  Post Events
@@ -84,7 +84,7 @@
 
 /**
  * @swagger
- *  /searchEvent?search=searchWord:
+ *  /event/searchEvent?search=searchWord:
  *      get:
  *        tags: ['Events']
  *        summary: Api to get searched events
@@ -106,7 +106,7 @@
 
 /**
  * @swagger
- *  /deleteEvent/:id:
+ *  /event/deleteEvent/:id:
  *      delete:
  *        tags: ['Events']
  *        summary: Api to Delete event
@@ -129,7 +129,7 @@
 
 /**
  * @swagger
- *  /updateEvent/:id:
+ *  /event/updateEvent/:id:
  *      patch:
  *        tags: ['Events']
  *        summary: Api to Update event

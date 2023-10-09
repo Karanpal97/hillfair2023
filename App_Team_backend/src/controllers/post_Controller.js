@@ -21,8 +21,8 @@ async function createPost(req,res){
       
 
    }catch(error){ 
-      
-        ErrorResponce.error=error
+      console.log(error);
+       ErrorResponce.error=error
         return res
         .status(StatusCodes.BAD_REQUEST)
         .json(

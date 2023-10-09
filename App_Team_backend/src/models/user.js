@@ -17,9 +17,7 @@ const  userSchema=new mongoose.Schema({
    bio:{
       type:String
    },
-   post:[{
-      type:mongoose.Schema.Types.ObjectId
-   }],
+   
    name:{
       type:String
    },
