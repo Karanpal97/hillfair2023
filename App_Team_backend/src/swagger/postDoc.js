@@ -83,28 +83,22 @@
  * 
  */
 
-/** 
+
+ /**
  * @swagger
  * /api/v1/post/get:
- *                get:
- *                   tags: ['Post']
- *                   summary: Api used to get all the posts
- *                   requestBody:
- *                         required: true
- *                         content:
- *                           application/json:
- *                               schema:
- *                                                               
- *                   responses:
- *                '201':
- *                   description: this will the posts
- *                   content:
- *                       application/json:
- *                           schema:
- * 
- *                '500':
- *                  description: error in getting the post
- * 
+ *      get: 
+ *         tags: ['Post']
+ *         summary: Api to get all post
+ *         discription: Api to get all post
+ *         responses:
+ *            '200':
+ *               discription: all events
+ *               content:
+ *                  application/json:
+ *                     schema:
+ *            '500':
+ *                description: Error loading data
  */
 
 /**
@@ -186,4 +180,53 @@
  *                  description: error in deleting the post
  * 
 */
+/**
+ * @swagger
+ * /api/v1/user/:rollno:
+ *      get: 
+ *         tags: ['signUp']
+ *         summary: Api to get the user through rollNo
+ *         discription: Api to get  user
+ *         responses:
+ *            '200':
+ *               discription: all events
+ *               content:
+ *                  application/json:
+ *                     schema:
+ *            '500':
+ *                description: Error loading data
+ */
+
+/**
+ * @swagger
+ * /api/v1/user/id/:userId:
+ *      get: 
+ *         tags: ['signUp']
+ *         summary: Api to get the user detail through user objectId
+ *         discription: Api to get all user
+ *         responses:
+ *            '200':
+ *               discription: all events
+ *               content:
+ *                  application/json:
+ *                     schema:
+ *            '500':
+ *                description: Error loading data
+ */
+/**
+ * @swagger
+ * /api/v1/user/signIn:
+ *      post: 
+ *         tags: ['signIn']
+ *         summary: Api to signIn
+ *         discription: this will return a jwt token 
+ *         responses:
+ *            '200':
+ *               discription: all events
+ *               content:
+ *                  application/json:
+ *                     schema:
+ *            '500':
+ *                description: Error loading data
+ */
 

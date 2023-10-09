@@ -77,4 +77,24 @@ catch(error){
     }
 }
 
-module.exports= {signUp,signIn,RollNo}
+async function findUser(req,res){
+    try{
+const user=await userService.userById(req.params.userId)
+  console.log(user)
+SuccessResponce.data=user;
+return res
+.status(StatusCodes.CREATED)
+.json(SuccessResponce)
+}
+
+catch(error){
+     console.log(error)
+     ErrorResponce.error=error;
+     return res
+     .status(StatusCodes.BAD_REQUEST)
+     .json(ErrorResponce)
+     
+    }
+}
+
+module.exports= {signUp,signIn,RollNo,findUser}

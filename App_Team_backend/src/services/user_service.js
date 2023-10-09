@@ -57,6 +57,10 @@ console.log(error);
 throw error;
     }
 }
+async function userById(id){
+      const userDetail=await UserRepo.findOne(id);
+      return userDetail
+}
 
 
 
@@ -98,5 +102,5 @@ function verifyToken(token){
 
 
 
-module.exports={create,signin,isAuthentication,rollNo}
+module.exports={create,signin,isAuthentication,rollNo,userById}
 

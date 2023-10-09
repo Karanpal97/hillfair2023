@@ -35,8 +35,8 @@ async function createPost(req,res){
 
 async function find(req,res){
    try{
-      const responce = await postService.findPost().populate;
-      console.log(responce[0].content);
+      const responce = await postService.findPost()
+     
       SuccessResponce.data=responce
       return res
        .status(StatusCodes.OK)
@@ -44,6 +44,7 @@ async function find(req,res){
       
 
    }catch(error){ 
+      console.log(error)
       
         ErrorResponce.error=error
         return res

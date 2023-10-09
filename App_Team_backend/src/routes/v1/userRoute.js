@@ -12,5 +12,6 @@ const router=express.Router();
 router.get('/info', AuthRequestMiddlewares.checkAuth, InfoController.info);
 router.post('/signUp' ,UserController.signUp);
 router.post('/signIn' ,AuthRequestMiddlewares.validateAuthRequest,UserController.signIn);
-router.get('/:rollNo',UserController.RollNo)
+router.get('/:rollNo',UserController.RollNo);
+router.get('/id/:userId',UserController.findUser)
 module.exports=router
