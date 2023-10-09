@@ -6,6 +6,8 @@ const apiRoute=require("./routes")
 const EventRout = require("./routes/Events");
 const teamrouter = require("./routes/TeamRoutes")
 const confRouter = require("./routes/confRoutes");
+const swaggerUi = require("swagger-ui-express");
+const spec = require ("./swagger/swagger.Json")
 
 
 connect()
@@ -16,6 +18,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({extended:true}))
 
+app.use('/api-docs' , swaggerUi.serve,swaggerUi.setup(spec));
 app.use('/api',apiRoute)
 app.use("/event", EventRout);
 app.use("/team", teamrouter);
