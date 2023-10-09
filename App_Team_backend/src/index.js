@@ -5,6 +5,7 @@ require('dotenv').config();
 const apiRoute=require("./routes")
 const EventRout = require("./routes/Events");
 const teamrouter = require("./routes/TeamRoutes")
+const confRouter = require("./routes/confRoutes");
 
 
 connect()
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended:true}))
 app.use('/api',apiRoute)
 app.use("/event", EventRout);
 app.use("/team", teamrouter);
+app.use("/conf", confRouter);
 
 const port = process.env.PORT;
 console.log(process.env.port);
