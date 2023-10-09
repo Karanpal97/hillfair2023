@@ -5,7 +5,7 @@ const options  ={
     definition:{
         openapi: '3.0.0',
         info:{
-            title: "Hilffair App",
+            title: "Hillfair App",
             version: "1.0.0",
         },
         servers: [

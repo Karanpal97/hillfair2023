@@ -1,3 +1,6 @@
+const {Like}=require("../models/like")
+
+
 class crudRepository{
   constructor(model){
    this.model=model;
@@ -27,8 +30,11 @@ try{const responce= await this.model.create(data);
 
 
  async findAll(){
-   const findAll=await this.model.find({});
-   return findAll;
+    const find = await this.model.find().populate('User')
+    return find
+  
+  
+   
  }
 
  async findbyName(text){

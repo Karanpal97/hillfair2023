@@ -17,12 +17,21 @@ const  userSchema=new mongoose.Schema({
    bio:{
       type:String
    },
-   post:[{
-      type:mongoose.Schema.Types.ObjectId
-   }],
+   
    name:{
       type:String
-   }
+   },
+   rollNo:{
+      type:String
+   },
+   
+   image: {
+      type:String
+   },
+   Instagram:{
+      type:String
+   },
+   
 })
 
 

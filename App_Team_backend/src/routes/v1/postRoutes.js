@@ -1,21 +1,24 @@
 const express=require("express")
 const {postController}=require("../../controllers")
+const { AuthRequestMiddlewares } = require('../../middleware');
 
 
- const {validateMiddleware}=require("../../middleware")
+//  const {validateMiddleware}=require("../../middleware")
 
 const router=express.Router();
 
 
-router.post("/",validateMiddleware.validCreateRequest,postController.createPost)
-// router.patch("/",tweetController.remove)
+router.post("/",AuthRequestMiddlewares.checkAuth ,postController.createPost)
+router.get("/get",postController.find);
+router.delete('/:id',postController.remove)
 
 
 
 
-// router.get("/get",tweetController.findAllTweet)
+// 
 
 // router.get('/:id', tweetController.findTweet)
+//validateMiddleware.validCreateRequest,
 
 
 module.exports=router;
