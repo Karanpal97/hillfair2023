@@ -9,6 +9,7 @@ const swaggerUi = require("swagger-ui-express");
 const spec = require ("./swagger/swagger.Json")
 
 
+
 connect()
 console.log("connected");
 const app = express();
@@ -21,6 +22,8 @@ app.use('/api-docs' , swaggerUi.serve,swaggerUi.setup(spec));
 app.use('/api',apiRoute)
 app.use("/event", EventRout);
 app.use("/team", teamrouter);
+
+
 
 const port = process.env.PORT;
 console.log(process.env.port);

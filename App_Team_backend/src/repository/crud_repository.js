@@ -27,7 +27,8 @@ try{const responce= await this.model.create(data);
 
 
  async findAll(){
-   const findAll=await this.model.find({});
+   const findAll = await this.model.find();
+  
    return findAll;
  }
 

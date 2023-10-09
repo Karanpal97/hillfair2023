@@ -1,11 +1,12 @@
 const PostRepository=require("../repository/post_Repository");
 const hashRepository=require("../repository/hash_repository");
-const {Users2}=require("../models/user")
-const mongoose=require('mongoose')
+
+const Post = require("../models/post");
 // const {checkAuth}=require("../middleware/validate-auth-request-middleware")
 
 const {StatusCodes}=require("http-status-codes")
-const AppError=require("../utils/errors/app-error")
+const AppError=require("../utils/errors/app-error");
+
 const postRepo=new PostRepository();
 const hashRepo=new hashRepository();
 
@@ -57,6 +58,7 @@ async function create(data,response){
 async function findPost(){
 try{
   const responce = await postRepo.findAll();
+ 
 return responce;
 }
 catch(error){

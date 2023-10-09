@@ -35,7 +35,8 @@ async function createPost(req,res){
 
 async function find(req,res){
    try{
-      const responce= await postService.findPost();
+      const responce = await postService.findPost().populate;
+      console.log(responce[0].content);
       SuccessResponce.data=responce
       return res
        .status(StatusCodes.OK)
