@@ -11,6 +11,7 @@ const router=express.Router();
 router.post("/",AuthRequestMiddlewares.checkAuth ,postController.createPost)
 router.get("/get",postController.find);
 router.delete('/:id',postController.remove)
+router.get("/:hashtag",postController.postByHastag);
 
 
 

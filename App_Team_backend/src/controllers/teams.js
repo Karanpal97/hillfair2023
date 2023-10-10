@@ -48,6 +48,7 @@ const team_model = require("../models/teams.js");
         const teams = await team_model.find();
         res.status(200).send(teams);
      } catch (error) {
+      console.log(error)
         res.status(500).send(error);
      }
 }

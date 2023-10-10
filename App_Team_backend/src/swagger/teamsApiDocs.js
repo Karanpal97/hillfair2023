@@ -32,7 +32,7 @@
 
 /**
  * @swagger
- * /teams:
+ * /team/getTeams:
  *  get:
  *      tags: ['teams']
  *      summary: return all teams
@@ -51,7 +51,7 @@
 
 /**
  * @swagger
- * /teams:
+ * /team/postTeam:
  *  post:
  *      tags: ['teams']
  *      summary: creates a new team

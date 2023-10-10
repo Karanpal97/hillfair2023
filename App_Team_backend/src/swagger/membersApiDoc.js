@@ -24,7 +24,7 @@
 
 /**
  * @swagger
- * /getMembers:
+ * /team/getMembers:
  *  get:
  *      tags: ['members']
  *      summary: return all members
@@ -43,7 +43,7 @@
 
 /**
  * @swagger
- * /postMembers:
+ * /team/postMembers:
  *  post:
  *      tags: ['members']
  *      summary: post a new member
@@ -97,7 +97,7 @@
 
 /**
  * @swagger
- * /getTeamMember/{id}:
+ * /team/getTeamMember/{id}:
  *  get:
  *      tags: ['members']
  *      summary: Returns all members with given team id
@@ -127,7 +127,7 @@
 
 /**
  * @swagger
- * /members/{id}:
+ * /team/updateMembers/{id}:
  *  patch:
  *      tags: ['members']
  *      summary: update a member 

@@ -32,7 +32,28 @@ try{const responce= await this.model.create(data);
  async findAll(){
     const find = await this.model.find().populate('User')
     return find
-  
+    
+      // try {
+      //   const find = await this.model.find()
+      //     .populate('User')
+      //     .populate({
+      //       path: 'likes',
+      //       model: 'Like',
+      //       populate: {
+      //         path: 'User',
+      //         model: 'Users2'
+      //       }
+      //     });
+      //   return find;
+      // } catch (error) {
+      //   console.error(error); // Log the error for debugging purposes
+      //   throw error; // Rethrow the error to handle it in the calling code
+      // }
+    
+    
+
+
+
   
    
  }

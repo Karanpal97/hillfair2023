@@ -15,36 +15,42 @@ async function create(data,response){
    try{
       console.log(response)
      const content=data.content;
-   
+   if(content.match(/#/g)){
     const tags=content.match(/#+[a-zA-Z0-9(_)]+/g).
-     map((tag) => tag.substring(1).toLowerCase());
-    
-     const responce=await postRepo.create({...data,User:response});
-
-    //  const id=await checkAuth()
-    //  console.log(id)
-    
-
+    map((tag) => tag.substring(1).toLowerCase());
    
-    
-  let alReadyPresentTag= await hashRepo.findbyName(tags)
+    const responce=await postRepo.create({...data,User:response});
+
+   //  const id=await checkAuth()
+   //  console.log(id)
    
-   let textOfPresentTags = alReadyPresentTag.map(tags => tags.text)
-     let newTag=tags.filter((tag)=>!textOfPresentTags.includes(tag));
-     newTag = newTag.map( tag => {
-      return {
-          text: tag,
-          post : [responce.id]
-      }
-  })
+
   
-  await hashRepo.bulkCreate(newTag);
-   alReadyPresentTag.forEach((tag) => {
-       tag.post.push(responce.id);
-       tag.save();
-       
-   })
-   return responce
+   
+ let alReadyPresentTag= await hashRepo.findbyName(tags)
+  
+  let textOfPresentTags = alReadyPresentTag.map(tags => tags.text)
+    let newTag=tags.filter((tag)=>!textOfPresentTags.includes(tag));
+    newTag = newTag.map( tag => {
+     return {
+         text: tag,
+         post : [responce.id]
+     }
+ })
+ 
+ await hashRepo.bulkCreate(newTag);
+  alReadyPresentTag.forEach((tag) => {
+      tag.post.push(responce.id);
+      tag.save();
+      
+  })
+  return responce
+   }else{
+    const responce=await postRepo.create({...data,User:response});
+    return responce
+
+   }
+   
 
   
 
@@ -72,5 +78,15 @@ async function deletePost(id){
     return error
   }
   }
+  async function findpostWithHastag(hashtag){
+    try{
+      const responce = await hashRepo.findbyName(hashtag);
+     
+    return responce;
+    }
+    catch(error){
+      return error
+    }}
 
-module.exports={create,findPost,deletePost};
+
+module.exports={create,findPost,deletePost,findpostWithHastag};

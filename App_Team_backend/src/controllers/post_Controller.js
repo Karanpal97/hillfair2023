@@ -78,6 +78,28 @@ async function remove(req,res){
 
 
 }
+async function postByHastag(req,res){
+   try{
+      const responce= await postService.findpostWithHastag(req.params.hashtag);
+      console.log(responce)
+      SuccessResponce.data=responce
+      return res
+       .status(StatusCodes.OK)
+       .json(SuccessResponce)
+      
+
+   }catch(error){ 
+      console.log(error)
+        ErrorResponce.error=error
+        return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json(
+         ErrorResponce
+        )
+   }
 
 
-module.exports={createPost,find,remove}
+}
+
+
+module.exports={createPost,find,remove,postByHastag}
