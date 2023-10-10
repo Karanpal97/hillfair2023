@@ -15,7 +15,7 @@
  *            type: string
  *            description: end date of event
  *           venue: 
- *            type: array
+ *            type: string
  *            description: venue of the event
  *           info:
  *              type: string
@@ -51,7 +51,7 @@
 
 /**
  * @swagger
- *  /event/postEvent:
+ * /event/postEvent:
  *         post:
  *            tags: ['Events']
  *            summary: Api to  Post Events
@@ -73,7 +73,7 @@
  * 
  *            responses:
  *                '201':
- *                   description: all users with "key" in usernames
+ *                   description: created event with given fields
  *                   content:
  *                       application/json:
  *                           schema:
@@ -106,7 +106,7 @@
 
 /**
  * @swagger
- *  /event/deleteEvent/:id:
+ *  /event/deleteEvent/{id}:
  *      delete:
  *        tags: ['Events']
  *        summary: Api to Delete event
@@ -129,7 +129,7 @@
 
 /**
  * @swagger
- *  /event/updateEvent/:id:
+ *  /event/updateEvent/{id}:
  *      patch:
  *        tags: ['Events']
  *        summary: Api to Update event
@@ -156,7 +156,7 @@
  *                  type: objectId
  *        responses:
  *            '200':
- *               discription: Upd eveatednt
+ *               discription: Updated event
  *               content:
  *                  application/json:
  *                     schema:
