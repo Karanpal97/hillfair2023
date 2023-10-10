@@ -84,6 +84,8 @@
  */
 
 
+
+
  /**
  * @swagger
  * /api/v1/post/get:
@@ -128,24 +130,25 @@
  *                  description: error while liking the content  
  */
 
-/** 
+
+/**
  * @swagger
  * /api/v1/user/signUp:
- *                post:
- *                   tags: ['signUp']
- *                   summary: Api used to signUp the user
- *                   requestBody:
- *                         required: true
- *                         content:
- *                           application/json:
- *                               schema:
- *                                  
- *                                  example:
- *                                        email: karangill1810@gmail.com
- *                                        password: 1234
- *                                        bio: student
- *                                        post: 6520f8dd28310fd237004d5b
- *                   responses:
+ *         post: 
+ *            tags: ['User']
+ *            summary: Api use to signUp the user
+ *            requestBody:
+ *                  required: true
+ *                  content:
+ *                    application/json:
+ *                        schema:
+ *                           
+ *                            example:
+ *                                email: karangill1810@gmail.com
+ *                                password: 1234
+ *                                bio: student
+ *                                post: 6520f8dd28310fd237004d5b
+ *            responses:
  *                '201':
  *                   description: this will signUp the user
  *                   content:
@@ -153,9 +156,9 @@
  *                           schema:
  * 
  *                '500':
- *                  description: error in signUp the user
+ *                  description: error in sigingUp the user
  * 
-*/
+ */
 
 /** 
  * @swagger
@@ -180,19 +183,20 @@
  *                  description: error in deleting the post
  * 
 */
-/**
+ /**
  * @swagger
- * /api/v1/user/:rollno:
+ * /api/v1/post/user/{rollNo}:
  *      get: 
- *         tags: ['signUp']
- *         summary: Api to get the user through rollNo
- *         discription: Api to get  user
+ *         tags: ['User']
+ *         summary: Api to get all user From rollNo
+ *         discription: Api to get all post
  *         responses:
  *            '200':
  *               discription: all events
  *               content:
  *                  application/json:
  *                     schema:
+ *                       ref: '#models/user'
  *            '500':
  *                description: Error loading data
  */
@@ -201,7 +205,7 @@
  * @swagger
  * /api/v1/user/id/:userId:
  *      get: 
- *         tags: ['signUp']
+ *         tags: ['User']
  *         summary: Api to get the user detail through user objectId
  *         discription: Api to get all user
  *         responses:
@@ -213,20 +217,33 @@
  *            '500':
  *                description: Error loading data
  */
+
+
 /**
  * @swagger
  * /api/v1/user/signIn:
- *      post: 
- *         tags: ['signIn']
- *         summary: Api to signIn
- *         discription: this will return a jwt token 
- *         responses:
- *            '200':
- *               discription: all events
- *               content:
- *                  application/json:
- *                     schema:
- *            '500':
- *                description: Error loading data
+ *         post: 
+ *            tags: ['User']
+ *            summary: Api use to signIn the user
+ *            requestBody:
+ *                  required: true
+ *                  content:
+ *                    application/json:
+ *                        schema:
+ *                           
+ *                            example:
+ *                                email: karangill1810@gmail.com
+ *                                password: 1234
+ *                               
+ *            responses:
+ *                '201':
+ *                   description: this will signIn the user
+ *                   content:
+ *                       application/json:
+ *                           schema:
+ * 
+ *                '500':
+ *                  description: error in sigingIn the user
+ * 
  */
 
