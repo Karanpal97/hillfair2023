@@ -4,7 +4,8 @@
   "description": "App team backend",
   "main": "index.js",
   "scripts": {
-     "dev": "npx nodemon src/index.js"
+    "start": "nodemon index.js",
+    "swagger-jsdoc": "node src/swagger/swagger.Json.js"
   },
   "repository": {
     "type": "git",

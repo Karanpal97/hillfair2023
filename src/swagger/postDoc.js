@@ -84,8 +84,6 @@
  */
 
 
-
-
  /**
  * @swagger
  * /api/v1/post/get:
@@ -116,9 +114,9 @@
  *                        schema:
  *                           
  *                            example:
- *                                modelId: 65243f1a29c80de2b983e016
+ *                                modelId: 6520f8e428310fd237004d5f
  *                                modelType: Post
- *                                userId: 652423e6ee8e2947e410f59c
+ *                                userId: 651eb93913b4dac40a37a8d4
  *            responses:
  *                '201':
  *                   description: this will like the post its is based on toggle like
@@ -130,25 +128,24 @@
  *                  description: error while liking the content  
  */
 
-
-/**
+/** 
  * @swagger
  * /api/v1/user/signUp:
- *         post: 
- *            tags: ['User']
- *            summary: Api use to signUp the user
- *            requestBody:
- *                  required: true
- *                  content:
- *                    application/json:
- *                        schema:
- *                           
- *                            example:
- *                                email: karangill1810@gmail.com
- *                                password: 1234
- *                                bio: student
- *                                post: 6520f8dd28310fd237004d5b
- *            responses:
+ *                post:
+ *                   tags: ['signUp']
+ *                   summary: Api used to signUp the user
+ *                   requestBody:
+ *                         required: true
+ *                         content:
+ *                           application/json:
+ *                               schema:
+ *                                  
+ *                                  example:
+ *                                        email: karangill1810@gmail.com
+ *                                        password: 1234
+ *                                        bio: student
+ *                                        post: 6520f8dd28310fd237004d5b
+ *                   responses:
  *                '201':
  *                   description: this will signUp the user
  *                   content:
@@ -156,9 +153,9 @@
  *                           schema:
  * 
  *                '500':
- *                  description: error in sigingUp the user
+ *                  description: error in signUp the user
  * 
- */
+*/
 
 /** 
  * @swagger
@@ -183,112 +180,53 @@
  *                  description: error in deleting the post
  * 
 */
-
-
- /**
+/**
  * @swagger
- * /api/v1/user/{rollNo}:
- *   get: 
- *     tags: ['User']
- *     summary: Api to get user by rollNo
- *     description: Api to get user details by rollNo
- *     parameters:
- *       - in: path
- *         name: rollNo
- *         schema:
- *           type: string
- *         required: true
- *         description: User's roll number
- *     responses:
- *       '200':
- *         description: User details retrieved successfully
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '../../models/user.js'  # Adjust this path based on your Swagger file structure
- *       '500':
- *         description: Error loading data
+ * /api/v1/user/:rollno:
+ *      get: 
+ *         tags: ['signUp']
+ *         summary: Api to get the user through rollNo
+ *         discription: Api to get  user
+ *         responses:
+ *            '200':
+ *               discription: all events
+ *               content:
+ *                  application/json:
+ *                     schema:
+ *            '500':
+ *                description: Error loading data
  */
-
- 
 
 /**
  * @swagger
- * /api/v1/user/id/{userId}:
- *   get:
- *     tags:
- *       - User
- *     summary: Api to get the user detail through user objectId
- *     description: Api to get user details by user objectId
- *     parameters:
- *       - in: path
- *         name: userId
- *         schema:
- *           type: string
- *         required: true
- *         description: User's ObjectId
- *     responses:
- *       '200':
- *         description: User details retrieved successfully
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/definitions/User'  # Adjust this path based on your Swagger file structure
- *       '500':
- *         description: Error loading data
- * definitions:
- *   User:
- *     type: object
- *     properties:
- *       id:
- *         type: string
- *         description: User's ObjectId
- *       name:
- *         type: string
- *         description: User's name
- *       email:
- *         type: string
- *         description: User's email address
- *       
+ * /api/v1/user/id/:userId:
+ *      get: 
+ *         tags: ['signUp']
+ *         summary: Api to get the user detail through user objectId
+ *         discription: Api to get all user
+ *         responses:
+ *            '200':
+ *               discription: all events
+ *               content:
+ *                  application/json:
+ *                     schema:
+ *            '500':
+ *                description: Error loading data
  */
-
-
 /**
  * @swagger
  * /api/v1/user/signIn:
- *   post:
- *     tags: ['User']
- *     summary: Api to signIn the User
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *                 example: 22bph083@gmail.com
- *               password:
- *                 type: string
- *                 example: 456
- *     responses:
- *       '201':
- *         description: User signed in successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   example: true
- *                 message:
- *                   type: string
- *                   example: "Successfully signed in"
- *                 data:
- *                   type: string
- *                   example: "YOUR_JWT_TOKEN"
- *       '500':
- *         description: Error in signing in the user
+ *      post: 
+ *         tags: ['signIn']
+ *         summary: Api to signIn
+ *         discription: this will return a jwt token 
+ *         responses:
+ *            '200':
+ *               discription: all events
+ *               content:
+ *                  application/json:
+ *                     schema:
+ *            '500':
+ *                description: Error loading data
  */
+
