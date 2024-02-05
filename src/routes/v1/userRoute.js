@@ -1,17 +1,19 @@
-const express=require("express");
+const express = require("express");
 
+const { InfoController } = require("../../controllers");
+const { UserController } = require("../../controllers");
+const { AuthRequestMiddlewares } = require("../../middleware");
 
-const { InfoController } = require('../../controllers');
-const {UserController}=require('../../controllers');
-const { AuthRequestMiddlewares } = require('../../middleware');
+const router = express.Router();
 
-
-
-const router=express.Router();
-
-router.get('/info', AuthRequestMiddlewares.checkAuth, InfoController.info);
-router.post('/signUp' ,UserController.signUp);
-router.post('/signIn' ,AuthRequestMiddlewares.validateAuthRequest,UserController.signIn);
-router.get('/:rollNo',UserController.RollNo);
-router.get('/id/:userId',UserController.findUser)
-module.exports=router
+router.get("/info", AuthRequestMiddlewares.checkAuth, InfoController.info);
+router.post("/", UserController.signUp);
+router.post(
+    "/signIn",
+    AuthRequestMiddlewares.validateAuthRequest,
+    UserController.signIn
+);
+router.patch("/update",UserController.updateUserInfo)
+router.get("/:rollNo", UserController.RollNo);
+router.get("/id/:userId", UserController.findUser);
+module.exports = router;
