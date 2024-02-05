@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     rollNo: {
         type: String,
+        unique: true,
     },
 
     image: {

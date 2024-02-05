@@ -8,11 +8,12 @@ async function signUp(req, res) {
     try {
         const user = await userService.create({
             bio: req.body.bio,
-            post: req.body.post,
+
             name: req.body.name,
             rollNo: req.body.rollNo,
             instagram: req.body.instagram,
             linkedin: req.body.linkedin,
+            image: req.body.image,
         });
         console.log(user);
         SuccessResponce.data = user;
