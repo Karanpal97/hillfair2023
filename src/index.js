@@ -28,7 +28,7 @@ app.use("/conf", confRouter);
 
 
 const port = process.env.PORT;
-console.log(process.env.port);
+console.log(port);
 
 
 
