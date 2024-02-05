@@ -1,4 +1,3 @@
-const {Like}=require("../models/like")
 
 
 class crudRepository{

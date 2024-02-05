@@ -8,18 +8,12 @@ async function createPost(req,res){
          content:req.body.content,
          likes:req.body.likes,
          comment:req.body.comment,
-         
-      
       }
       const response = await postService.create(postdata, req.User);
-      // console.log(responce)
-     
      SuccessResponce.data=response
       return res
        .status(StatusCodes.CREATED)
        .json(SuccessResponce)
-      
-
    }catch(error){ 
       console.log(error);
        ErrorResponce.error=error
@@ -29,8 +23,6 @@ async function createPost(req,res){
          ErrorResponce
         )
    }
-
-
 }
 
 async function find(req,res){

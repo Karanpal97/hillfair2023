@@ -33,7 +33,7 @@ async function checkAuth(req,res,next){
 
     if(response){
         req.User=response;
-        console.log(req.User)
+        console.log(req.User,"the userdata in the auth")
         next()
     }
    }
