@@ -14,7 +14,7 @@ const getConfessions = async (req, res) =>{
         const data = req.body;
 
         try {
-            const newConf = await Confession(data)
+            const newConf = await Confession.create(data)
             await newConf.populate("user");
             res.status(201).send(newConf);
         } catch (error) {

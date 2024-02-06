@@ -23,25 +23,21 @@ class crudRepository {
     }
 
     async findAll() {
-        const find = await this.model.find().populate("User");
-        return find;
+        const query = this.model.find();
 
-        // try {
-        //   const find = await this.model.find()
-        //     .populate('User')
-        //     .populate({
-        //       path: 'likes',
-        //       model: 'Like',
-        //       populate: {
-        //         path: 'User',
-        //         model: 'Users2'
-        //       }
-        //     });
-        //   return find;
-        // } catch (error) {
-        //   console.error(error); // Log the error for debugging purposes
-        //   throw error; // Rethrow the error to handle it in the calling code
-        // }
+        // Use populate on the query object
+        query.populate([
+            {
+                path: "likes",
+                populate: { path: "user", model: "Users2" }, // Assuming 'User' is the name of your User model
+            },"User"
+        ]
+           
+        );
+        // Execute the query
+        const result = await query.exec();
+
+        return result;
     }
 
     async findbyName(text) {
