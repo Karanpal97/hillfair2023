@@ -29,6 +29,9 @@ const EventSchema = new mongoose.Schema({
     isWorkshop:{
         type:Boolean,
         default:false
+    },
+    discription:{
+
     }
 })
 
