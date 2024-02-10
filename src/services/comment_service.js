@@ -15,4 +15,16 @@ async function createComment(data) {
         );
     }
 }
-module.exports = { createComment };
+async function getComment(Confession) {
+    try {
+        const comment = commentRepo.getConfesstion(Confession);
+        return comment;
+    } catch (error) {
+        console.log(error);
+        throw new AppError(
+            "cannot create the new user object",
+            StatusCodes.INTERNAL_SERVER_ERROR
+        );
+    }
+}
+module.exports = { createComment, getComment };
