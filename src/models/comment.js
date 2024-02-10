@@ -13,7 +13,7 @@ const commentSchema = new mongoose.Schema({
     onModel: {
         type: String,
         required: true,
-        enum: ["Post", "Comment"],
+        enum: ["Post", "Comment", "Confession"],
     },
 
     commentable: {

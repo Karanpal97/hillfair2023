@@ -7,8 +7,8 @@ async function CommentController(req, res) {
     try {
         const response = await commentService.createComment({
             user: req.body.user,
-            modelType: req.body.modelType,
-            modelId: req.body.modelId,
+            onModel: req.body.onModel,
+            commentable: req.body.commentable,
             content: req.body.content,
         });
         SuccessResponce.data = response;
