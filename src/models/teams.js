@@ -1,28 +1,24 @@
 const mongoose = require("mongoose");
 
-const teamSchema= new mongoose.Schema({
-    team_name:{
-        type:String,
-        required:true,
-        unique:true
+const teamSchema = new mongoose.Schema({
+    team_name: {
+        type: String,
+        required: true,
     },
-    image:{
-        type:String
+    image: {
+        type: String,
     },
-    secretary:{
-        type:String
+    name: {
+        type: String,
     },
-    convenor:{
-        type:String
+    position: {
+        type: String,
     },
-    instagram:{
-        type:String
+    instagram: {
+        type: String,
     },
-    priority:{
-        type:Number
-    }
-})
+});
 
-const team_model=new mongoose.model("team",teamSchema);
+const team_model = new mongoose.model("team", teamSchema);
 
 module.exports = team_model;
