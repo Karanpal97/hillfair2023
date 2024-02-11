@@ -21,7 +21,7 @@ async function CommentController(req, res) {
 }
 async function getCommentController(req, res) {
     try {
-        const response = await commentService.getComment(req.params.Confession);
+        const response = await commentService.getComment(req.params.id);
         SuccessResponce.data = response;
         return res.status(StatusCodes.CREATED).json(SuccessResponce);
     } catch (error) {

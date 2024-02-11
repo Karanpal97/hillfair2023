@@ -15,9 +15,9 @@ async function createComment(data) {
         );
     }
 }
-async function getComment(Confession) {
+async function getComment(id) {
     try {
-        const comment = commentRepo.getConfesstion(Confession);
+        const comment = commentRepo.getConfesstion(id);
         return comment;
     } catch (error) {
         console.log(error);

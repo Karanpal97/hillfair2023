@@ -9,6 +9,6 @@ const {
 // const getCommentController = require("../../controllers/comment_Controller");
 
 router.post("/comment", CommentController);
-router.get("/:Confession", getCommentController);
+router.get("/:id", getCommentController);
 
 module.exports = router;

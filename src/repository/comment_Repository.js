@@ -14,10 +14,10 @@ class commentRepository extends crudRepository {
     //      const response = await Users2.findOne({ rollNo: rollNo });
     //      return response;
     //  }
-    async getConfesstion(Confession) {
+    async getConfesstion(id) {
         try {
             const comment = await Comment.find({
-                onModel: Confession,
+                commentable: id,
             });
             return comment;
         } catch (error) {
