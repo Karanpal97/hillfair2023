@@ -10,6 +10,19 @@ const getConfessions = async (req, res) => {
         res.status(500).send(error);
     }
 };
+const getConfessionsByName = async (req, res) => {
+    try {
+        const name = req.params.name;
+        const conf_data = await Confession.find({
+            dedicated_to: name,
+        });
+
+        res.status(200).send(conf_data);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+};
 
 const postConfession = async (req, res) => {
     const data = req.body;
@@ -58,4 +71,9 @@ const deleteConfession = async (req, res) => {
     }
 };
 
-module.exports = { getConfessions, postConfession, deleteConfession };
+module.exports = {
+    getConfessions,
+    postConfession,
+    deleteConfession,
+    getConfessionsByName,
+};
