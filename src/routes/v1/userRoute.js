@@ -13,7 +13,7 @@ router.post(
     AuthRequestMiddlewares.validateAuthRequest,
     UserController.signIn
 );
-router.patch("/update",UserController.updateUserInfo)
+router.patch("/update", UserController.updateUserInfo);
 router.get("/:rollNo", UserController.RollNo);
-router.get("/id/:userId", UserController.findUser);
+router.get("/id/user/:userId", UserController.findUser);
 module.exports = router;
