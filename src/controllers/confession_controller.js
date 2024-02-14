@@ -26,13 +26,35 @@ const postConfession = async (req, res) => {
 
 const deleteConfession = async (req, res) => {
     const delId = req.params.id;
+    console.log(delId, "the id");
 
     try {
-        const delConf = await Confession.findByIdAndDelete(delId);
-        await delConf.populate("user");
-        res.status(200).send(delConf);
+        // Check if the confession exists
+        const confession = await Confession.findById(delId);
+        if (!confession) {
+            return res.status(404).send("Confession not found");
+        }
+
+        // Increment the deletion counter
+        confession.deleteCount = (confession.deleteCount || 0) + 1;
+
+        // Check if the confession has been requested for deletion three times
+        if (confession.deleteCount >= 3) {
+            // If it has been requested three times, then delete the confession
+            await Confession.findByIdAndDelete(delId);
+            return res.status(200).send("Confession deleted");
+        } else {
+            // If it hasn't been requested three times, save the updated confession
+            await confession.save();
+            return res
+                .status(200)
+                .send(
+                    "Delete request recorded. Needs 3 requests for deletion."
+                );
+        }
     } catch (error) {
-        res.status(500).send(error);
+        console.error(error);
+        res.status(500).send("Internal Server Error");
     }
 };
 

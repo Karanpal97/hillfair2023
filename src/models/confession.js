@@ -11,6 +11,10 @@ const confessionSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Users2",
     },
+    deleteCount: {
+        type: Number,
+        default: 0,
+    },
 });
 
 const Confession = mongoose.model("confession", confessionSchema);
