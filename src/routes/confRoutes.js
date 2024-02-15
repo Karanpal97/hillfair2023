@@ -7,8 +7,13 @@ const {
     deleteConfession,
     getConfessionsByName,
 } = require("../controllers/confession_controller");
+const { getConfession } = require("../controllers/message_controller");
 
-router.get("/allConfessions", getConfessions);
+const { postMessage } = require("../controllers/message_controller");
+
+router.post("/postMessage", postMessage);
+router.get("/get/allConfessions", getConfessions);
+router.get("/allConfessions", getConfession);
 router.get("/getByName/:name", getConfessionsByName);
 
 router.post("/postConfession", postConfession);
