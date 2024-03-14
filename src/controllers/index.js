@@ -1,7 +1,8 @@
-module.exports={
-   postController:require("./post_Controller"),
-   likeController:require("./like_Controller"),
-   CommentController:require("./comment_Controller"),
-   InfoController: require('./info-controller'),
-   UserController: require("./User_Controllers")
-}
+module.exports = {
+    postController: require("./post_Controller"),
+    likeController: require("./like_Controller"),
+    CommentController: require("./comment_Controller"),
+    InfoController: require("./info-controller"),
+    UserController: require("./User_Controllers"),
+    RoomController: require("./roomController"),
+};
