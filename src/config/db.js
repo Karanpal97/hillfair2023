@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 
 const connect =async()=>{
-   await mongoose.connect("mongodb+srv://karangill1810:Notification%4097@cluster0.ipzbkbg.mongodb.net/")
+   await mongoose.connect(process.env.db)
 }
 
 module.exports={
